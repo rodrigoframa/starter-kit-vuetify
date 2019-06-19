@@ -1,34 +1,39 @@
 <template>
   <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>open_in_new</v-icon>
-      </v-btn>
-    </v-toolbar>
-
-    <v-content>
-      <router-view/>
-    </v-content>
+    <Loading :loading="loading"></Loading>
+    <SnackBar :show="snack.show" :text="snack.msg" :type="snack.type" @dismissed="onDismissed"/>
+    <Menu v-model="drawer"/>
+    <Header @drawer="drawer = !drawer"/>
+    <Content/>
+    <Footer/>
   </v-app>
 </template>
 
 <script>
+import Header from './components/template/Header'
+import Footer from './components/template/Footer'
+import Content from './components/template/Content'
+import Menu from './components/template/Menu'
+import SnackBar from './components/SnackBar'
+import { mapGetters, mapActions } from 'vuex'
+import Loading from './components/Loading'
 
 export default {
   name: 'App',
+  components: { Loading, SnackBar, Menu, Content, Header, Footer },
+  computed: {
+    ...mapGetters(['snack', 'loading'])
+  },
   data () {
     return {
+      drawer: false
       //
+    }
+  },
+  methods: {
+    ...mapActions(['clearSnack']),
+    onDismissed () {
+      this.clearSnack()
     }
   }
 }
