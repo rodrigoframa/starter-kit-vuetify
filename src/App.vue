@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import Header from './components/template/Header'
-import Footer from './components/template/Footer'
-import Content from './components/template/Content'
-import Menu from './components/template/Menu'
+import Header from './components/template/TheHeader'
+import Footer from './components/template/TheFooter'
+import Content from './components/template/TheContent'
+import Menu from './components/template/TheMenu'
 import SnackBar from './components/SnackBar'
 import { mapGetters, mapActions } from 'vuex'
 import Loading from './components/Loading'

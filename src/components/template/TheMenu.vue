@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import MenuItem from './MenuItem'
+import MenuItem from './TheMenuItem'
 import { menu } from '../../config'
 
 export default {
@@ -63,7 +63,6 @@ export default {
 <style scoped>
   .menu-lateral {
     background-color: #2f4050;
-    /*color: #293846;*/
   }
 
 </style>
